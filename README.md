@@ -17,10 +17,15 @@ container.load(
 
 **Defining events**
 ```typescript
+export interface PublishBlogPostEvent {
+    userId: string;
+    postId: string;
+}
+
 export const MigrateDatabase = PubSubEvent.make<void>('migrate');
-export const RepublishAllPrograms = PubSubEvent.make<PublishBlogPostEvent>('publishBlogPost', {
+export const PublishBlogPost = PubSubEvent.make<PublishBlogPostEvent>('publishBlogPost', {
     userId: 'string',
-    blogPostId: 'string'
+    postId: 'string'
 })
 ```
 
@@ -28,8 +33,15 @@ export const RepublishAllPrograms = PubSubEvent.make<PublishBlogPostEvent>('publ
 ```typescript
 async function triggerPublishPost(userId: string, postId: string) {
     const event = PublishProgram.create({
-        userId, blogPostId: postId
+        userId, postId
     });
     return this.pubSubService.publishMessage(event);
 }
+```
+
+**Register a Firebase function**
+```typescript
+export const publishBlogPost = createPubSubFunction(PublishBlogPost, (data) => {
+	console.log(data.userId, data.postId);
+});
 ```
