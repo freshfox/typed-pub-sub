@@ -1,0 +1,10 @@
+{
+  "name": "typed-pub-sub",
+  "version": "1.0.0",
+  "description": "Lightweight wrapper for typed PubSub events",
+  "main": "index.js",
+  "repository": "https://github.com/freshfox/typed-pub-sub",
+  "author": "Dominic Bartl",
+  "license": "MIT",
+  "private": false
+}
