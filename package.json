@@ -29,7 +29,7 @@
   },
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "preversion": "git pull && yarn build && yarn test:all",
+    "preversion": "git pull && yarn build",
     "postversion": "git push --follow-tags && npm publish"
   },
   "devDependencies": {
