@@ -8,9 +8,7 @@
 			"es6", "dom"
 		],
 		"types": [
-			// add node as an option
 			"node",
-			"mocha",
 			"reflect-metadata"
 		],
 		"sourceMap": true,
