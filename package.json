@@ -6,5 +6,18 @@
   "repository": "https://github.com/freshfox/typed-pub-sub",
   "author": "Dominic Bartl",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "@types/node": "^14.0.26",
+    "firebase-functions": "^3.8.0",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "@google-cloud/pubsub": "^2.3.0",
+    "inversify": "^5.0.1"
+  },
+  "peerDependencies": {
+    "firebase-functions": "^3.8.0"
+  }
 }
