@@ -1,12 +1,6 @@
 import {inject, injectable} from 'inversify';
 import {PubSub, Topic} from '@google-cloud/pubsub';
-import {PubSubEventData, PubSubEvent} from "./pub_sub_event";
-
-export interface IPubSubConfig {
-	projectId: string;
-}
-
-export const PubSubConfig = Symbol('PubSubConfig');
+import {IPubSubConfig, PubSubConfig, PubSubEventData} from "./types";
 
 @injectable()
 export class PubSubService {
@@ -24,7 +18,7 @@ export class PubSubService {
 	}
 
 	async publish(topicName: string, data?: any) {
-		const topic = await this.getTopic(topicName);
+		const topic = this.getTopic(topicName);
 		return topic.publishJSON(data || {});
 	}
 
