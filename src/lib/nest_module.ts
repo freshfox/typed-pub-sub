@@ -2,12 +2,12 @@ import {DynamicModule, FactoryProvider, ModuleMetadata, Provider, Type} from "@n
 import {IPubSubConfig, PubSubConfig} from "./types";
 import {PubSubService} from "./pub_sup_service";
 
-export class PubSubModule {
+export class PubSubNestModule {
 
     static forRootAsync(options: PubSubModuleAsyncOptions): DynamicModule {
         return {
             imports: options.imports || [],
-            module: PubSubModule,
+            module: PubSubNestModule,
             providers: [
                 PubSubService,
                 ...this.createConnectProviders(options)
