@@ -1,13 +1,14 @@
 import {inject, injectable} from 'inversify';
 import {PubSub, Topic} from '@google-cloud/pubsub';
 import {IPubSubConfig, PubSubConfig, PubSubEventData} from "./types";
+import {Inject} from "@nestjs/common";
 
 @injectable()
 export class PubSubService {
 
     private readonly pubsubClient: PubSub;
 
-    constructor(@inject(PubSubConfig) private config: IPubSubConfig) {
+    constructor(@inject(PubSubConfig) @Inject(PubSubConfig) private config: IPubSubConfig) {
         this.pubsubClient = new PubSub({
             projectId: config.projectId,
         });
