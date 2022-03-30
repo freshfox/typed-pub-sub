@@ -27,10 +27,6 @@
   "engines": {
     "node": ">=10.10.0"
   },
-  "exports": {
-    "./": "dist/lib/index.js",
-    "./functions": "dist/lib/functions.js"
-  },
   "scripts": {
     "build": "rm -rf dist && tsc",
     "preversion": "git pull && yarn build",
