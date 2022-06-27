@@ -29,8 +29,8 @@ export class PubSubNestModule {
         return [
             this.createConnectOptionsProvider(options),
             {
-                provide: options.useClass,
-                useClass: options.useClass,
+                provide: options.useClass!,
+                useClass: options.useClass!,
             },
         ];
     }
@@ -53,7 +53,7 @@ export class PubSubNestModule {
             provide: PubSubConfig,
             useFactory: async (optionsFactory: PubSubOptionsFactory) =>
                 await optionsFactory.createPubSubOptions(),
-            inject: [options.useExisting || options.useClass],
+            inject: [options.useExisting || options.useClass!],
         };
     }
 

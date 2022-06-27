@@ -9,15 +9,15 @@ export interface RuntimeOptions extends BaseOptions {
 
 type PubSubFunctionCallback<T> = (data: T) => Promise<any> | any;
 
-export function createPubSubFunction<T>(event: PubSubEvent<T>, callback: PubSubFunctionCallback<T>);
+export function createPubSubFunction<T>(event: PubSubEvent<T>, callback: PubSubFunctionCallback<T>): functions.CloudFunction<functions.pubsub.Message>;
 export function createPubSubFunction<T>(event: PubSubEvent<T>,
                                         runtimeOptions: RuntimeOptions,
-                                        callback: PubSubFunctionCallback<T>)
+                                        callback: PubSubFunctionCallback<T>): functions.CloudFunction<functions.pubsub.Message>
 
 export function createPubSubFunction<T>(event: PubSubEvent<T>,
                                         runtimeOptionsOrCallback: RuntimeOptions | PubSubFunctionCallback<T>,
                                         callback?: PubSubFunctionCallback<T>) {
-    let runtimeOptions: RuntimeOptions = null;
+    let runtimeOptions: RuntimeOptions | null = null;
     if (!callback) {
         callback = runtimeOptionsOrCallback as PubSubFunctionCallback<T>;
     } else {
@@ -36,6 +36,6 @@ export function createPubSubFunction<T>(event: PubSubEvent<T>,
         .pubsub.topic(event.topic)
         .onPublish(async (message, context) => {
             const data = event.parseData(message);
-            return callback(data);
+            return callback!(data);
         });
 }

@@ -2,8 +2,8 @@ import {Message} from "firebase-functions/lib/providers/pubsub";
 
 export class PubSubEvent<T> implements PubSubEventDescription<T>{
 
-    readonly topic: string;
-    readonly arguments: EventArguments<T>;
+    readonly topic!: string;
+    readonly arguments!: EventArguments<T>;
 
     constructor(desc: PubSubEventDescription<T>) {
         Object.assign(this, desc);
