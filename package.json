@@ -1,6 +1,6 @@
 {
   "name": "typed-pub-sub",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "Lightweight wrapper for typed PubSub events",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index.d.ts",
