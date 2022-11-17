@@ -1,7 +1,6 @@
 import {PubSubEvent} from "./types";
-import {RuntimeOptions as BaseOptions} from "firebase-functions";
+import {RuntimeOptions as BaseOptions, SUPPORTED_REGIONS} from "firebase-functions";
 import * as functions from "firebase-functions";
-import {SUPPORTED_REGIONS} from "firebase-functions/lib/function-configuration";
 
 export interface RuntimeOptions extends BaseOptions {
     regions?: typeof SUPPORTED_REGIONS[number][]
